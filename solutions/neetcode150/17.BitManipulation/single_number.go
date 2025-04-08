@@ -1,4 +1,4 @@
-package main
+package bitmanipulation
 
 // Leetcode 136
 func singleNumber(nums []int) int {
