@@ -38,8 +38,8 @@ func numIslands(grid [][]byte) int {
 		}
 	}
 
-	for r := 0; r < rows; r++ {
-		for c := 0; c < cols; c++ {
+	for r := range rows {
+		for c := range cols {
 			if grid[r][c] == '1' {
 				if _, exists := visit[[2]int{r, c}]; !exists {
 					bfs(r, c)
