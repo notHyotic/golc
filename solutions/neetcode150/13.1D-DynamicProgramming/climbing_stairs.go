@@ -1,4 +1,4 @@
-package main
+package dp
 
 // Leetcode #70
 func climbStairs(n int) int {

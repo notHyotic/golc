@@ -1,4 +1,4 @@
-package main
+package dp
 
 // Leetcode #746
 func minCostClimbingStairs(cost []int) int {
