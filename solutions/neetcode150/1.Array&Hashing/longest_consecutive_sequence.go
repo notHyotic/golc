@@ -1,29 +1,34 @@
 package main
 
 func longestConsecutive(nums []int) int {
-	var existMap = map[int]bool{}
-	var longest = 0
+    numSet := make(map[int]struct{})
+    for _, num := range nums {
+        numSet[num] = struct{}{}
+    }
 
-	for i := 0; i < len(nums); i++ {
-		existMap[nums[i]] = true
-	}
+    maxLen := 0
 
-	for i := 0; i < len(nums); i++ {
-		// check if map contains nums[i] - 1
-		var n = nums[i]
+    for num := range numSet {
+        // Only start counting if num is the beginning of a sequence
+        if _, exists := numSet[num-1]; !exists {
+            currentNum := num
+            currentLen := 1
 
-		if !existMap[n-1] {
-			var counter = 0
-			for existMap[n + counter] {
-				counter++
-			}
+            // Use a while-like loop to check the condition
+            for {
+                if _, exists := numSet[currentNum+1]; exists {
+                    currentNum++
+                    currentLen++
+                } else {
+                    break
+                }
+            }
 
-			if counter > longest {
-				longest = counter
-			}
-		}
+            if currentLen > maxLen {
+                maxLen = currentLen
+            }
+        }
+    }
 
-	}
-
-    return longest
+    return maxLen
 }
